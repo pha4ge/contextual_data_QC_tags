@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft/2019-09/schema#",
+    "type": "object",
+    "properties": {
+        "quality_control_method_name": {
+            "description": "The name of the method used to assess whether a sequence passed a predetermined quality control threshold.",
+            "ontology": "GENEPIO:0100557",
+            "type": "string",
+            "examples": [
+                "ncov-tools"
+            ]
+        },
+        "quality_control_method_version": {
+            "description": "The version number of the method used to assess whether a sequence passed a predetermined quality control threshold.",
+            "ontology": "GENEPIO:0100558",
+            "type": "string",
+            "examples": [
+                "1.2.3"
+            ]
+        },
+        "quality_control_determination": {
+            "description": "The determination of a quality control assessment.",
+            "ontology": "GENEPIO:0100559",
+            "type": "string",
+            "Enums": [
+                "no quality control issues identified [GENEPIO:0100562]",
+                "sequence passed quality control [GENEPIO:0100563]",
+                "sequence failed quality control [GENEPIO:0100564]",
+                "minor quality control issues identified [GENEPIO:0100565]",
+                "sequence flagged for potential quality control issues [GENEPIO:0100566]",
+                "quality control not performed [GENEPIO:0100567]"
+            ],
+            "examples": [
+                "sequence failed quality control [GENEPIO:0100564]"
+            ]
+        },
+        "quality_control_issues": {
+            "description": "The reason contributing to, or causing, a low quality determination in a quality control assessment.",
+            "ontology": "GENEPIO:0100560",
+            "type": "string",
+            "Enums": [
+                "low quality sequence [GENEPIO:0100568]",
+                "sequenced contaminated [GENEPIO:0100569]",
+                "low average genome coverage [GENEPIO:0100570]",
+                "low percent genome captured [GENEPIO:0100571]",
+                "read lengths shorter than expected [GENEPIO:0100572]",
+                "sequence amplification artifacts [GENEPIO:0100573]",
+                "low signal to noise ratio [GENEPIO:0100574]",
+                "low coverage of characteristic mutations [GENEPIO:0100575]"
+            ],
+            "examples": [
+                "low average genome coverage [GENEPIO:0100570]"
+            ]
+        },
+        "quality_control_details": {
+            "description": "The details surrounding a low quality determination in a quality control assessment.",
+            "ontology": "GENEPIO:0100561",
+            "type": "string",
+            "examples": [
+                "CT value of 39. Low viral load. Low DNA concentration after amplification."
+            ]
+        }
+    }
+}
