@@ -25,4 +25,4 @@ For more information and/or assistance, contact `datastructures@pha4ge.org` or t
 
 ## License
 
-[CC-BY 4.0 International](LISENCE.md)
+[MIT lisence](lisence)
