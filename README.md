@@ -25,4 +25,4 @@ For more information and/or assistance, contact `datastructures@pha4ge.org` or t
 
 ## License
 
-[MIT lisence](lisence)
+[MIT License](https://github.com/pha4ge/contextual_data_QC_tags/blob/main/license)
