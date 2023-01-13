@@ -1,23 +1,73 @@
 # The PHA4GE QC Contextual Data Tags Specification
-How to tag and share public health sequence datasets with known quality issues for testing and training purposes
+
+Standardized annotations for sharing public health sequence datasets with known quality issues to facilitate testing and training 
 
 ## Motivation
 
-As public health laboratories expand their sequencing and bioinformatics capacity for the surveillance of different pathogens, labs must carry out robust optimization of wet and dry lab procedures. High quality as well as lower quality datasets are highly useful for testing and optimizing the performance of algorithms, pipelines and instruments, as well as training new personnel. Sharing of sub-optimal data is useful for the community, especially when the data is carefully annotated with known issues so that it is not mistaken for better quality information, and so that such datasets can be easily identified in repositories. 
+As public health laboratories expand their genomic sequencing and bioinformatics capacity for the surveillance of different pathogens, labs must carry out robust validation, training, and optimization of wet- and dry-lab procedures. Achieving these goals for algorithms, pipelines and instruments requires lower-quality datasets for comparison as much as those of higher-quality - which means that the sharing of sub-optimal data is vital for the community. However, sharing of sub-optimal data requires its careful annotation with known issues to enable appropriate use, avoid its being mistaken for better quality information, and for it to be easily identifiable in repositories. 
 
-(PHA4GE)[https://pha4ge.org/] has developed a set of standardized contextual data tags (fields and terms) that can be included in public repository submissions as a means of flagging pathogen sequence data with known quality issues to increase their discoverability. The standardized tags are organism-agnostic and sequencing technique-agnostic and can be applied to data generated from any pathogen using an array of sequencing techniques.
+![overview](https://i.imgur.com/t4lHvjw.png)
+>Figure 1: Sequence data quality is assessed using prescribed criteria (i.e. metrics) and thresholds. Datasets of high and lower quality have many uses in public health activities such as staff training and lab procedure/software optimization and validation in ideal and real-world scenarios. 
 
-## PHA4GE overview
+Unfortunately, there are currently no standardized attributes for tagging poor-quality datasets to maximize their utility, searchability, and accessibility. To address the challenges of sharing lower quality datasets, [PHA4GE](https://pha4ge.org) has developed a set of standardized contextual data tags (fields and terms) that can be included in public repository submissions as a means of flagging pathogen sequence data with known quality issues to increase their discoverability. 
 
-The Public Health Alliance for Genomic Epidemiology ([PHA4GE](https://pha4ge.org)) is a global coalition that is actively working to establish consensus standards, document and share best practices, improve the availability of critical bioinformatic tools and resources, and advocate for greater openness, interoperability, accessibility and reproducibility in public health microbial bioinformatics.
+The contextual data tags were developed through consultations with the community including input from the International Nucleotide Sequence Data Collaboration (INSDC), and have been standardized using community-based resources known as ontologies. The standardized tags are organism-agnostic and sequencing technique-agnostic and can be applied to data generated from any pathogen using an array of sequencing techniques. Definitions, ontology IDs, and examples of use are provided, as well as a JSON representation. Suggestions for additional tags can be submitted to PHA4GE via the New Term Request Form. By providing a mechanism for feedback and suggestions, we also expect that the tags will evolve with the needs of the community.
 
 ## Content description
 
 ### QC Contextual Data Tags Specification
 
-Quality control metrics and thresholds often differ across laboratories and surveillance networks. While public health laboratories generate a vast number of high quality sequences, there will often be a proportion of datasets that may just fall just short of a set of prescribed baseline quality control metrics that are excluded from many types of public health analyses. In these cases, the issues associated with these borderline or lower quality datasets have been identified.
+The [PHA4GE](https://pha4ge.org) Contextual Data QC Tag Specification provides a set of five fields which can be included as user-defined contextual data in public repository raw read sequence submissions. Two of the fields (“quality control determination” and “quality control issues”) have sets of prescribed values (Table 1).
 
-The set of fields include “quality_control_method_name”, “quality_control_method_version”, “quality_control_determination”, “quality_control_determination”, “quality_control_issues”, “quality_control_details”. Definitions, ontology IDs, and examples of use are provided as a JSON representation. The contextual data tags were developed through consultations with the community including input from the International Nucleotide Sequence Data Collaboration (INSDC), and standardized using community-based resources known as ontologies.
+> Table 1: Standardized fields and values for annotating quality control information in shared pathogen genomics datasets
+
+| Field | Definition | Ontology ID | Data Type | Values | Example |
+|---|---|---|---|---|---|
+| quality control method name | The name of the method used to assess whether a sequence passed a predetermined quality control threshold. | GENEPIO:0100557 | String | No prescribed values | ncov-tools |
+| quality control method version | The version number of the method used to assess whether a sequence passed a predetermined quality control threshold. | GENEPIO:0100558 | String | No prescribed values | 1.2.3 |
+| quality control determination | The determination of a quality control assessment. | GENEPIO:0100559 | Enums | no quality control issues identified [GENEPIO:0100562]; sequence passed quality control [GENEPIO:0100563]; sequence failed quality control [GENEPIO:0100564]; minor quality control issues identified [GENEPIO:0100565]; sequence flagged for potential quality control issues [GENEPIO:0100566]; quality control not performed [GENEPIO:0100567] | sequence failed quality control [GENEPIO:0100564] |
+| quality control issues | The reason contributing to, or causing, a low quality determination in a quality control assessment. | GENEPIO:0100560 | Enums | low quality sequence [GENEPIO:0100568]; sequenced contaminated [GENEPIO:0100569]; low average genome coverage [GENEPIO:0100570]; low percent genome captured [GENEPIO:0100571]; read lengths shorter than expected [GENEPIO:0100572]; sequence amplification artifacts [GENEPIO:0100573]; low signal to noise ratio [GENEPIO:0100574]; low coverage of characteristic mutations [GENEPIO:0100575] | low average genome coverage [GENEPIO:0100570] |
+| quality control details | The details surrounding a low quality determination in a quality control assessment.   | GENEPIO:0100561 | String | No prescribed values | CT value of 39. Low viral load. Low DNA concentration after amplification. |
+
+### Limitations and Considerations
+
+1. The QC tags are intended to address issues pertaining to different types of sequencing techniques. Not all tags may apply to all techniques and so where they are not appropriate then they should not be used. 
+2. The tags are also meant to describe QC results of sequence data rather than downstream analytical results. 
+3. Owing to the wide variety of quality control software available, and the differences in criteria and thresholds, the application of these attribute tags may be subjective and dependent on the QC processes performed. To better evaluate and interpret the QC determinations proposed, it is recommended that other information pertaining to QC be included in other contextual data fields not specified in this work (e.g. choice of reference genome), and that the tags be interpreted in light of the other methodological metadata included in the record (i.e. BioSample, Experiment/SRA contextual data). 
+4. The controlled vocabulary attributes are intended for high-level triage purposes rather than capturing all methods in detail. However, information affecting the selection of one tag over another can also be included in the “quality_control_details” field. 
+5. It is also important to note that the quality control tags refer to a particular sample obtained at one point in time, and not the comparison of a set of samples across time or from different tissues of the same host.
+
+## Supporting Materials
+
+### [QC Tag Specification Reference Guide]()
+Field and term definitions as well as guidance for use are available in the QC Tag Specification Reference Guide.
+
+### [The QC Tag Specification in Machine-Amenable JSON Format]()
+The standardized fields and terms are available as a JSON representation for easier integration in applications. 
+
+### [PHA4GE-modified SRA Submission Form]()
+To facilitate the inclusion of QC tags in NCBI submissions to the Sequence Read Archive (SRA), the fields and terms have been supplied as user-defined contextual data in this modified SRA submission form. The “quality control determination” and “quality control issues” fields provide drop-down menus with standardized values and multi-tagging with multiple values is enabled. Note: this file contains macros.
+
+### [New Term Request Template]()
+To better keep standardized attributes aligned with the needs of the public health bioinformatics community, users can submit requests to PHA4GE for additional tags by submitting an issue via the [QC Tag repository IssueTracker](https://github.com/pha4ge/contextual_data_QC_tags/issues). Alternatively, new term requests can be emailed to `datastructures@pha4ge.org`.
+
+Issues should be titled “NTR: [list term label(s)]” and should contain the following information.
+* a. For new fields
+  * Label (what you want the tag to be called): 
+  * Definition/Description (what the tag should mean): 
+  * Definition Source (reference, website): 
+  * Synonyms or alternative labels (other ways someone might say the same thing): 
+  * Additional Comments (not an annotation):
+
+* b. For picklist additions
+  * Associated Field(s) (which field the value should belong to): 
+  * Parent Term (if the new term is a more specific version of a term already present): 
+  * Label (what you want the tag to be called): 
+  * Definition/Description (what the tag should mean): 
+  * Definition Source (reference, website): 
+  * Synonyms or alternative labels (other ways someone might say the same thing): 
+  * Additional Comments (not an annotation):
+
 
 ## Contacts
 
