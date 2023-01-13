@@ -39,16 +39,16 @@ The [PHA4GE](https://pha4ge.org) Contextual Data QC Tag Specification provides a
 
 ## Supporting Materials
 
-### [QC Tag Specification Reference Guide]()
+### [QC Tag Specification Reference Guide](https://github.com/pha4ge/contextual_data_QC_tags/blob/main/PHA4GE%20QC%20Tag%20Reference%20Guide.xlsx)
 Field and term definitions as well as guidance for use are available in the QC Tag Specification Reference Guide.
 
-### [The QC Tag Specification in Machine-Amenable JSON Format]()
+### [The QC Tag Specification in Machine-Amenable JSON Format](https://github.com/pha4ge/contextual_data_QC_tags/blob/main/QC_Contextual_Data_Tags_Specification.json)
 The standardized fields and terms are available as a JSON representation for easier integration in applications. 
 
-### [PHA4GE-modified SRA Submission Form]()
+### [PHA4GE-modified SRA Submission Form](https://github.com/pha4ge/contextual_data_QC_tags/blob/main/PHA4GE_SRA_QC_Tag.xlsm)
 To facilitate the inclusion of QC tags in NCBI submissions to the Sequence Read Archive (SRA), the fields and terms have been supplied as user-defined contextual data in this modified SRA submission form. The “quality control determination” and “quality control issues” fields provide drop-down menus with standardized values and multi-tagging with multiple values is enabled. Note: this file contains macros.
 
-### [New Term Request Template]()
+### [New Term Request Template](https://github.com/pha4ge/contextual_data_QC_tags/issues/new/choose)
 To better keep standardized attributes aligned with the needs of the public health bioinformatics community, users can submit requests to PHA4GE for additional tags by submitting an issue via the [QC Tag repository IssueTracker](https://github.com/pha4ge/contextual_data_QC_tags/issues). Alternatively, new term requests can be emailed to `datastructures@pha4ge.org`.
 
 Issues should be titled “NTR: [list term label(s)]” and should contain the following information.
