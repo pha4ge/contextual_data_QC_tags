@@ -28,5 +28,6 @@ Definition/Description:
 Definition Source:
 Synonyms or alternative labels:
 Additional Comments (not an annotation):
+
 ---
 Contributor Attribution: {Optional - ORCiD is preferred}
